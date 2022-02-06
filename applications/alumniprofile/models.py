@@ -43,7 +43,7 @@ class Constants:
     WORKING_STATUS = (
         ('Is Working', 'Is Working'),
         ('Is Pursuing Higher Studies', 'Is Pursuing Higher Studies'),
-        ('Is Self Employed', 'Is Self Employed')
+        ('Is Self Employed', 'Is Self Employed'),
     )
 
     YEAR_OF_ADDMISSION = tuple((n, str(n)) for n in range(2005, datetime.datetime.now().year))

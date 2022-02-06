@@ -75,6 +75,9 @@ def registrations_index(request):
                 raise RuntimeError("Invalid verification request for roll no. {}.".format(profile.roll_no))
 
             if 'approve' in request.POST:
+                profile.user.is_active = True
+                profile.user.save()
+
                 profile.verify = True
                 # mail_sent = send_verification_email(get_current_site(request).domain, request.is_secure(), profile)
                 # profile.mail_sent = mail_sent
