@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from applications.blog.models import Tags
 
-import operator
 
 # Create your views here.
 def index(request):

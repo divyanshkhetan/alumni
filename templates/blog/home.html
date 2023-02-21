@@ -9,7 +9,14 @@ Alumni Connect - Blogs
 <link rel="stylesheet" type="text/css" href="{% static 'blog/css/home.css' %}"/>
 
 <style>
+    .tags {
+        cursor: default;
+    }
     .tags:hover {
+        border-bottom: 2px solid #000000;
+    }
+
+    .active {
         border-bottom: 2px solid #000000;
     }
 </style>
@@ -43,12 +50,12 @@ Alumni Connect - Blogs
         <div class="d-flex flex-row justify-content-between" style="font-size: 14px;">
             <div class="d-flex flex-row justify-content-start">
 
-                <div class="tags mr-4" onmouseover="">
+                <div class="tags active mr-4" onclick="tagSelector(this)">
                     Latest
                 </div>
 
                 {% for tag in tags %}
-                    <div class="tags mr-4" onmouseover="">
+                    <div class="tags mr-4" onclick="tagSelector(this)">
                         {{ tag }}
                     </div>
                 {% endfor %}
@@ -68,6 +75,22 @@ Alumni Connect - Blogs
 
 {% block javascript %}
     <script>
-
+        function tagSelector(e) {
+            var tagSelected = e.innerText;
+            document.querySelectorAll('.tags').forEach((tagElement) => {
+                tagElement.classList.remove('active');
+            });
+            e.classList.add('active');
+            $.ajax({
+                url: "/blog/api/getblogs",
+                type: "GET",
+                data: {
+                    tag: tagSelected
+                },
+                success: function(result) {
+                    console.log(result);
+                }
+            });
+        }
     </script>
 {% endblock %}
