@@ -1,1 +1,73 @@
-Lets get started !
+{% extends 'globals/base.html' %}
+{% load static %}
+
+{% block title %}
+Alumni Connect - Blogs
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'blog/css/home.css' %}"/>
+
+<style>
+    .tags:hover {
+        border-bottom: 2px solid #000000;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+
+{% include 'globals/navbar.html' %}
+    <div class="blog_cover pt-5">
+        <div class="d-flex flex-row justify-content-around blog-cover-content">
+            <div>
+                <div class="d-flex flex-column h-100 justify-content-center">
+                    <div class="blog-title-text">Blog</div>
+                    <div class="block-title-subtext">
+                        Discover stories, thinking, and expertise <br> from writers on any topic.
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <img src="{% static 'blog/svg/blog_vector.svg' %}" alt="" sizes="" srcset="">
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+    
+        <!-- TODO: Add a carousel here for the featured Blogs -->
+
+
+        <div class="d-flex flex-row justify-content-between" style="font-size: 14px;">
+            <div class="d-flex flex-row justify-content-start">
+
+                <div class="tags mr-4" onmouseover="">
+                    Latest
+                </div>
+
+                {% for tag in tags %}
+                    <div class="tags mr-4" onmouseover="">
+                        {{ tag }}
+                    </div>
+                {% endfor %}
+
+            </div>
+
+            <div>
+                <span class="mr-3">Sort by</span>
+                <span>
+                    A &harr; Z
+                </span>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+    <script>
+
+    </script>
+{% endblock %}

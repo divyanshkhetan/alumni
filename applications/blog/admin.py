@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from applications.blog.models import Blog, Campaign, Replies
+from applications.blog.models import Blog, Campaign, Replies, Tags
 
 # Register your models here.
 class BlogAdmin(admin.ModelAdmin):
@@ -19,11 +19,18 @@ class CampaignAdmin(admin.ModelAdmin):
 
 class RepliesAdmin(admin.ModelAdmin):
     list_display = (
-        'reply_id', 'blog_id', 'sender', 'reciever', 'time_stamp',
+        'reply_id', 'blog_id', 'author', 'parent_reply_id', 'time_stamp',
     )
     ordering = [('-time_stamp')]
     search_fields = ['sender', 'blog_id']
 
+
+class TagsAdmin(admin.ModelAdmin):
+    list_display = ('tag_name', 'date_added', 'last_modified')
+    ordering = ['tag_name']
+    search_fields = ['tag_name']
+
 admin.site.register(Blog, BlogAdmin)
 admin.site.register(Campaign, CampaignAdmin)
 admin.site.register(Replies, RepliesAdmin)
+admin.site.register(Tags, TagsAdmin)

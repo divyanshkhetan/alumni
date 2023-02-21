@@ -1,0 +1,22 @@
+* {
+    font-family: Helvetica, Arial, sans-serif;
+    color: #080808;
+}
+
+.blog_cover {
+    background-color: #6BCDF0;
+}
+
+.blog-cover-content {
+    margin: 1rem;
+}
+
+.blog-title-text {
+    font-size: 107px;
+    font-weight: 700;
+}
+
+.block-title-subtext {
+    font-size: 24px;
+    font-weight: 400;
+}
